@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.IOException;
+
 import static com.alan.cockapooserver.global.Response.responseCreated;
 import static com.alan.cockapooserver.global.Response.responseOKWith;
 
@@ -23,8 +25,8 @@ public class BlogController {
     }
 
     @PostMapping()
-    public ResponseEntity<?> saveBlogListFromRepo(){
-        blogService.saveBlogList();
+    public ResponseEntity<?> updateBlogListFromRepo() throws IOException {
+        blogService.updateBlogList();
         return ResponseEntity.created(null).body(responseCreated());
     }
 }
