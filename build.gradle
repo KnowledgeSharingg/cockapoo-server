@@ -2,11 +2,27 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.0.6'
 	id 'io.spring.dependency-management' version '1.1.0'
+	id 'org.jetbrains.kotlin.jvm' version '1.9.22'
+	id 'org.jetbrains.kotlin.kapt' version '1.9.22'
+	id "org.jetbrains.kotlin.plugin.allopen" version "1.9.22"
+	id "org.jetbrains.kotlin.plugin.noarg" version "1.9.22"
 }
 
 group = 'com.alan'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '17'
+
+compileKotlin {
+	kotlinOptions {
+		jvmTarget = "17"
+	}
+}
+
+compileTestKotlin {
+	kotlinOptions {
+		jvmTarget = "17"
+	}
+}
 
 configurations {
 	compileOnly {
@@ -16,6 +32,10 @@ configurations {
 
 repositories {
 	mavenCentral()
+}
+
+ext {
+	kotlinVersion = '1.9.22'
 }
 
 dependencies {
@@ -28,6 +48,7 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'com.h2database:h2'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation "org.jetbrains.kotlin:kotlin-stdlib:${kotlinVersion}"
 }
 
 tasks.named('test') {
