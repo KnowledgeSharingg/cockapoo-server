@@ -17,7 +17,7 @@ public class Response<T> {
     private String message;
 
     public static <T> Response<T> response(Integer status, T data, String message){
-        return new Response<>(status, data, message);
+        return new Response<T>(status, data, message);
     }
 
     public static <T> Response responseOK(){
@@ -29,6 +29,6 @@ public class Response<T> {
     }
 
     public static <T> Response<T> responseOKWith(T data){
-        return new Response<>(200, data, "ok");
+        return new Response<T>(200, data, "ok");
     }
 }
