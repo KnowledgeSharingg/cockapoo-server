@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service
 @Service
 class BlogService(private val blogRepository: BlogRepository) {
 
+    
     fun getBlogs(): List<Blog> = blogRepository.findAll()
 
     fun updateBlogsFromGithubRepository() {
